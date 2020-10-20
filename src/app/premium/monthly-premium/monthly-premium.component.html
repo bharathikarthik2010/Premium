@@ -1,0 +1,33 @@
+<form [formGroup]="premiumForm" (ngSubmit)="onSubmit()">
+    <label>
+      Name <b style='color:red;'>*</b> :
+      <input type="text" formControlName="name" required>
+    </label>
+   
+    <label>
+      Age <b style='color:red;'>*</b> :
+      <input type="number" formControlName="age" > 
+    </label>
+    
+    <label>
+        Date Of Birth <b style='color:red;'>*</b>:
+        <input type="date" formControlName="DOB" > 
+      </label>
+    
+    <label>
+        Occupation <b style='color:red;'>*</b> :
+        <select  id="select" name="select" (change)="onOccupationChange($event)" formControlName="occupation">
+            <option *ngFor="let oc of _occupationlist " [value]="oc.name">
+            {{oc.rating}}
+            </option>
+            </select>
+    </label>
+    
+    <label>
+        Death-Sum Insured <b style='color:red;'>*</b> :
+        <input type="number" formControlName="sumInsured" >
+    </label>
+ 
+  
+    <button type="submit" [disabled]="!premiumForm.valid">Submit</button>
+  </form>
