@@ -2,17 +2,16 @@
 
 .container
 {
-    
-    margin: 50px;
-    color: navy;
+    margin: 20px;
+    color: rgb(70, 136, 236);
     border-radius: 10px;
-    background-color:rgb(215, 232, 238);
+    background-color:rgb(237, 243, 245);
+   
 
 }
 
 .maindiv
 {
-    width: 50%;
     position: relative;
     margin-left: 25px;
     
@@ -23,22 +22,23 @@
 }
 .heading
 {
-    padding: 10px;
+    font-weight: bold;
+    padding-top: 40px;
     text-align: center;
+    color: rgb(17, 91, 201);
 }
 .left
 {
     width: 100%;
-    float: left;
-    margin: 10px 40px 0 25px;
+    margin: 10px 20px 0 25px;
     padding: 5px;;
     
 }
 .right
 {
-    margin: 50px;
-    
+    margin: 30px;  
 }
+
 .button
 {
 margin:20px 20px 20px 0px;
@@ -49,4 +49,15 @@ height: 40px;
 font-size: large;
 text-decoration: rgb(37, 34, 34);
 
+}
+.alert
+{
+    color: red;
+    font-style: italic;
+}
+.outdiv
+{
+    margin-left: 50px;
+    color: green;
+    font-weight: bolder;
 }

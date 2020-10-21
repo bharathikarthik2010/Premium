@@ -15,7 +15,7 @@ export class MonthlyPremiumComponent implements OnInit {
   _ratingfactorlist : any;
   rating_value : any;
   _calculatedpremium : any;
-  _Infostring :any = "Your Monthly premium is ";
+  _Infostring :any  ;
 
   constructor(private fb: FormBuilder) { }
 
@@ -37,6 +37,8 @@ export class MonthlyPremiumComponent implements OnInit {
       occupation: [0],
       sumInsured: [,Validators.required]
     });
+    this._Infostring = "";
+    this._calculatedpremium = "";
   }
 
   onOccupationChange($event)
@@ -48,11 +50,18 @@ export class MonthlyPremiumComponent implements OnInit {
     }
   }
 
+
+
   onSubmit() {
     // Formula : Death Premium = (Death Cover amount * Occupation Rating Factor * Age) /1000 * 12
     console.warn(this.premiumForm.value);
-    this._calculatedpremium  =  ( this.premiumForm.get('sumInsured').value * this.rating_value * this.premiumForm.get('age').value) /1000 * 12
+    this._calculatedpremium  =  (( this.premiumForm.get('sumInsured').value * this.rating_value * this.premiumForm.get('age').value) /1000 * 12);
 
+
+    if(this._calculatedpremium != "")
+    {
+     this._Infostring =  "Based on below inputs,Monthly Premium is  ";
+    }
   }
 
 }

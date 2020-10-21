@@ -1,31 +1,60 @@
 
   <div class="container">
-    <div class="heading"><h2> Monthly Premium </h2></div>
-
-    <div class="heading"><h3> {{this._calculatedpremium }}</h3></div>
+    <div class="heading"> MONTHLY PREMIUM </div>
+    <div class="outdiv"> {{this._Infostring + this._calculatedpremium  }}</div>
 
 
     <div class="maindiv">
     <form [formGroup]="premiumForm" (ngSubmit)="onSubmit()">
     <div class="left">
+     
     <label>
-      Name <b class="star">*</b> :
-      <input type="text" formControlName="name" placeholder="Enter Your Name">
+        Name <b class="star">*</b> :
     </label>
+  
+        <input type="text" formControlName="name" placeholder="Enter Your Name">
+        <div *ngIf="premiumForm.controls.name.invalid && (premiumForm.controls.name.dirty || premiumForm.controls.name.touched)"
+           class="alert">
+
+           <div style="margin-left: 80px;" *ngIf="premiumForm.controls.name.errors.required">
+             Name is required.
+           </div>
+ 
+        </div>
+        
+   
     </div>
 
     <div class="left">
     <label>
       Age <b class="star">*</b> :
-      <input type="number" formControlName="age" placeholder="Enter Your Age"> 
     </label>
+      <input type="number" formControlName="age" placeholder="Enter Your Age"> 
+      <div *ngIf="premiumForm.controls.age.invalid && (premiumForm.controls.age.dirty || premiumForm.controls.age.touched)"
+      class="alert">
+
+      <div style="margin-left: 80px;" *ngIf="premiumForm.controls.age.errors.required">
+        Age is required.
+      </div>
+
+   </div>
+    
     </div>
 
     <div class="left">
     <label>
         Date Of Birth <b class="star">*</b> :
-        <input type="date" formControlName="DOB" > 
       </label>
+        <input type="date" formControlName="DOB" > 
+        <div *ngIf="premiumForm.controls.DOB.invalid && (premiumForm.controls.DOB.dirty || premiumForm.controls.DOB.touched)"
+           class="alert">
+
+           <div style="margin-left: 80px;" *ngIf="premiumForm.controls.DOB.errors.required">
+             Date Of Birth is required.
+           </div>
+ 
+        </div>
+     
     </div>
 
     <div class="left">
@@ -49,6 +78,7 @@
 
     <div class="right">
     <button  class="button" type="submit" [disabled]="!premiumForm.valid">Calculate</button>
+    
   </div>
   </form>
     </div>
