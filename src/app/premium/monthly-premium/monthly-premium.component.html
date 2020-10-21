@@ -1,33 +1,53 @@
-<form [formGroup]="premiumForm" (ngSubmit)="onSubmit()">
+
+  <div class="container">
+    <div class="heading"><h2> Monthly Premium </h2></div>
+
+    <div class="maindiv">
+    <form [formGroup]="premiumForm" (ngSubmit)="onSubmit()">
+    <div class="left">
     <label>
-      Name <b style='color:red;'>*</b> :
-      <input type="text" formControlName="name" required>
+      Name <b class="star">*</b> :
+      <input type="text" formControlName="name" placeholder="Enter Your Name">
     </label>
-   
+    </div>
+
+    <div class="left">
     <label>
-      Age <b style='color:red;'>*</b> :
-      <input type="number" formControlName="age" > 
+      Age <b class="star">*</b> :
+      <input type="number" formControlName="age" placeholder="Enter Your Age"> 
     </label>
-    
+    </div>
+
+    <div class="left">
     <label>
-        Date Of Birth <b style='color:red;'>*</b>:
+        Date Of Birth <b class="star">*</b> :
         <input type="date" formControlName="DOB" > 
       </label>
-    
+    </div>
+
+    <div class="left">
     <label>
-        Occupation <b style='color:red;'>*</b> :
+        Occupation <b class="star">*</b> :
         <select  id="select" name="select" (change)="onOccupationChange($event)" formControlName="occupation">
-            <option *ngFor="let oc of _occupationlist " [value]="oc.name">
-            {{oc.rating}}
+            <option *ngFor="let oc of _occupationlist " [value]="oc.rating">
+            {{oc.name}}
             </option>
             </select>
     </label>
-    
+    </div>
+
+    <div class="left">
     <label>
-        Death-Sum Insured <b style='color:red;'>*</b> :
-        <input type="number" formControlName="sumInsured" >
+        Sum Insured <b class="star">*</b> :
+        <input type="number" formControlName="sumInsured" placeholder="Enter Sum Assured" >
     </label>
- 
-  
-    <button type="submit" [disabled]="!premiumForm.valid">Submit</button>
+    </div>
+
+
+    <div class="right">
+    <button  class="button" type="submit" [disabled]="!premiumForm.valid">Calculate</button>
+  </div>
   </form>
+    </div>
+  </div>
+
