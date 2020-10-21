@@ -13,6 +13,10 @@ export class MonthlyPremiumComponent implements OnInit {
   premiumForm : FormGroup;
   _occupationlist :any;
   _ratingfactorlist : any;
+  rating_value : any;
+  _calculatedpremium : any;
+  _Infostring :any = "Your Monthly premium is ";
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(){
@@ -37,13 +41,18 @@ export class MonthlyPremiumComponent implements OnInit {
 
   onOccupationChange($event)
   {
-
+    // Get Rating factor value on selected occupation
+    if ($event) {
+      let selected_occupation = $event.target.value;
+       this.rating_value = this._ratingfactorlist.filter(r => (r.rating == selected_occupation))[0].Factor;
+    }
   }
 
   onSubmit() {
-    // TODO: Use EventEmitter with form value
     // Formula : Death Premium = (Death Cover amount * Occupation Rating Factor * Age) /1000 * 12
     console.warn(this.premiumForm.value);
+    this._calculatedpremium  =  ( this.premiumForm.get('sumInsured').value * this.rating_value * this.premiumForm.get('age').value) /1000 * 12
+
   }
 
 }
