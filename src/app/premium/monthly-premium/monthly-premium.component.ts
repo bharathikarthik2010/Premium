@@ -9,7 +9,7 @@ import { FormArray } from '@angular/forms';
 })
 export class MonthlyPremiumComponent implements OnInit {
 
-
+  //variable declaration
   premiumForm: FormGroup;
   _occupationlist: any;
   _ratingfactorlist: any;
@@ -21,7 +21,7 @@ export class MonthlyPremiumComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-
+    // set occupation and rating factors
     const _occupation = [{ name: "-- Select Occupation --", rating: "0" }, { name: "Cleaner", rating: "Light Manual" }, { name: "Doctor", rating: "Professional" }, { name: "Author", rating: "White Collar" }, { name: "Farmer", rating: "Heavy Manual" }, { name: "Mechanic", rating: "Heavy Manual" }, { name: "Florist", rating: "Light Manual" }];
     const _Ratingfactor = [{ rating: "Professional", Factor: 1.0 }, { rating: "White Collar", Factor: 1.25 }, { rating: "Light Manual", Factor: 1.50 }, { rating: "Heavy Manual", Factor: 1.75 }];
     this._occupationlist = _occupation;
@@ -30,8 +30,10 @@ export class MonthlyPremiumComponent implements OnInit {
   }
 
   initiateForm() {
+
+    // initialize form values
     this.premiumForm = this.fb.group({
-      name: ['', Validators.compose([Validators.required, Validators.pattern('^[a-z]+$'),Validators.maxLength(200)])],
+      name: ['', Validators.compose([Validators.required, Validators.pattern('^[a-z]+$'), Validators.maxLength(200)])],
       age: [, Validators.compose([Validators.required, Validators.pattern('^[0-9]+$')])],
       DOB: ['', Validators.required],
       occupation: [0],
@@ -44,7 +46,7 @@ export class MonthlyPremiumComponent implements OnInit {
   }
 
   onOccupationChange($event) {
-    // Get Rating factor value on selected occupation
+    // Get Rating factor value on selected occupation 
     if ($event) {
       let selected_occupation = $event.target.value;
       if (selected_occupation != 0) {
@@ -58,6 +60,7 @@ export class MonthlyPremiumComponent implements OnInit {
   }
 
   clearform() {
+    // clear form value
     this.initiateForm();
   }
 
@@ -69,6 +72,7 @@ export class MonthlyPremiumComponent implements OnInit {
     }
     else {
       this.occupationinvalid = false;
+      //calculate monthly premium
       this._calculatedpremium = ((this.premiumForm.get('sumInsured').value * this.rating_value * this.premiumForm.get('age').value) / 1000 * 12).toFixed(2);
 
 

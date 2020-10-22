@@ -9,16 +9,15 @@
       <div class="left">
         <div class="alignlabel">
           <label>
-            Name <b class="star">*</b> 
+            Name <b class="star">*</b>
           </label>
         </div>
-        <input class="inputalign" type="text" formControlName="name" onkeypress="return event.charCode >= 65"
-          placeholder="Enter Your Name">
+        <input class="inputalign" type="text" formControlName="name" placeholder="Enter Your Name">
         <div
           *ngIf="(premiumForm.controls.name.invalid && (premiumForm.controls.name.dirty || premiumForm.controls.name.touched))"
           class="alert">
 
-          <div class ="errortextalign" *ngIf="premiumForm.controls.name.errors.required">
+          <div class="errortextalign" *ngIf="premiumForm.controls.name.errors.required">
             Name is required !
           </div>
         </div>
@@ -28,17 +27,17 @@
       <div class="left">
         <div class="alignlabel">
           <label>
-            Age <b class="star">*</b> 
+            Age <b class="star">*</b>
           </label>
         </div>
 
-        <input type="text" class="inputalign" formControlName="age" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-          placeholder="Enter Your Age">
+        <input type="text" class="inputalign" formControlName="age"
+          onkeypress="return event.charCode >= 48 && event.charCode <= 57" placeholder="Enter Your Age">
         <div
           *ngIf="premiumForm.controls.age.invalid && (premiumForm.controls.age.dirty || premiumForm.controls.age.touched)"
           class="alert">
 
-          <div class ="errortextalign" *ngIf="premiumForm.controls.age.errors.required">
+          <div class="errortextalign" *ngIf="premiumForm.controls.age.errors.required">
             Age is required!
           </div>
 
@@ -48,16 +47,16 @@
 
       <div class="left">
         <div class="alignlabel">
-        <label>
-          Date Of Birth <b class="star">*</b> 
-        </label>
+          <label>
+            Date Of Birth <b class="star">*</b>
+          </label>
         </div>
-        <input type="date"class="inputalign"  formControlName="DOB">
+        <input type="date" class="inputalign" formControlName="DOB">
         <div
           *ngIf="premiumForm.controls.DOB.invalid && (premiumForm.controls.DOB.dirty || premiumForm.controls.DOB.touched)"
           class="alert">
 
-          <div class ="errortextalign" *ngIf="premiumForm.controls.DOB.errors.required">
+          <div class="errortextalign" *ngIf="premiumForm.controls.DOB.errors.required">
             Date Of Birth is required !
           </div>
 
@@ -67,34 +66,36 @@
 
       <div class="left">
         <div class="alignlabel">
-        <label>
-          Occupation <b class="star">*</b> 
-        </label>
+          <label>
+            Occupation <b class="star">*</b>
+          </label>
         </div>
-        <select id="select" class="inputalign" name="select" (change)="onOccupationChange($event)" formControlName="occupation">
+        <select id="select" class="inputalign" name="select" (change)="onOccupationChange($event)"
+          formControlName="occupation">
           <option *ngFor="let oc of _occupationlist " [value]="oc.rating">
             {{oc.name}}
           </option>
 
         </select>
-        <div class ="errortextalign" *ngIf="this.occupationinvalid" class="alert errortextalign">Select Occupation !</div>
+        <div class="errortextalign" *ngIf="this.occupationinvalid" class="alert errortextalign">Select Occupation !
+        </div>
 
       </div>
 
       <div class="left">
         <div class="alignlabel">
-        <label>
-          Sum Insured <b class="star">*</b> 
-        </label>
+          <label>
+            Sum Insured <b class="star">*</b>
+          </label>
         </div>
-        
-        <input type="text" class="inputalign" onkeypress="return event.charCode >= 46 && event.charCode <= 57" formControlName="sumInsured"
-          placeholder="Enter Sum Insured">
+
+        <input type="text" class="inputalign" onkeypress="return event.charCode >= 46 && event.charCode <= 57"
+          formControlName="sumInsured" placeholder="Enter Sum Insured">
         <div
           *ngIf="premiumForm.controls.sumInsured.invalid && (premiumForm.controls.sumInsured.dirty || premiumForm.controls.sumInsured.touched)"
           class="alert">
 
-          <div class ="errortextalign" *ngIf="premiumForm.controls.sumInsured.errors.required">
+          <div class="errortextalign" *ngIf="premiumForm.controls.sumInsured.errors.required">
             Sum Insured is required !
           </div>
 
