@@ -50,6 +50,7 @@ font-size: large;
 text-decoration: rgb(37, 34, 34);
 
 }
+
 .alert
 {
     color: red;
@@ -58,6 +59,33 @@ text-decoration: rgb(37, 34, 34);
 .outdiv
 {
     margin-left: 50px;
-    color: green;
+    color: #105f10;
     font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 85%;
+    margin-top: 10px;
+    text-align: center;
+    font-size: large;
+    border-radius: 5px;
+    height: 20px;
+    padding: 25px;
+}
+
+.alignlabel{
+    margin-right: 20px;
+    width: 20%;
+    float: left;
+}
+
+.inputalign
+{
+    width: 200px;
+    height: 30px;
+    border-color: #f5efef;
+    margin-top: -10px;
+}
+.errortextalign
+{
+    margin-left: 280px;
+    margin-top: 10px;
 }
