@@ -77,7 +77,7 @@ export class MonthlyPremiumComponent implements OnInit {
 
 
       if (this._calculatedpremium != "") {
-        this._Infostring = "Based on below input , Calculated Monthly Premium -  ";
+        this._Infostring = "Based on below input , Calculated Monthly Premium is ";
       }
     }
   }
