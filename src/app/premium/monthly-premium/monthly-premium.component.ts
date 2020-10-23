@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 
+
 @Component({
   selector: 'app-monthly-premium',
   templateUrl: './monthly-premium.component.html',
@@ -17,6 +18,7 @@ export class MonthlyPremiumComponent implements OnInit {
   _calculatedpremium: any;
   _Infostring: any;
   occupationinvalid: boolean;
+  IsAgevalid: boolean;
 
   constructor(private fb: FormBuilder) { }
 
@@ -42,6 +44,7 @@ export class MonthlyPremiumComponent implements OnInit {
     this._Infostring = "";
     this._calculatedpremium = "";
     this.occupationinvalid = false;
+    this.IsAgevalid = true;
 
   }
 
@@ -64,21 +67,42 @@ export class MonthlyPremiumComponent implements OnInit {
     this.initiateForm();
   }
 
+  calculateDateDiff(inp) {
+    let currentDate = new Date();
+    inp = new Date(inp);
+
+    return Math.floor((Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) - Date.UTC(inp.getFullYear(), inp.getMonth(), inp.getDate())) / (1000 * 60 * 60 * 24) / 365);
+  }
+
   onSubmit() {
     // Formula : Death Premium = (Death Cover amount * Occupation Rating Factor * Age) /1000 * 12
-    console.warn(this.premiumForm.value);
+
     if (this.premiumForm.get('occupation').value == '0') {
       this.occupationinvalid = true;
     }
     else {
       this.occupationinvalid = false;
+
       //calculate monthly premium
-      this._calculatedpremium = ((this.premiumForm.get('sumInsured').value * this.rating_value * this.premiumForm.get('age').value) / 1000 * 12).toFixed(2);
+      // calculate Age based on DOB
+      let _ageValue = this.calculateDateDiff(this.premiumForm.get('DOB').value);
 
+      if (_ageValue != null && _ageValue != 0 && _ageValue > 0) {
+        this.IsAgevalid = true;
+        //get premium value by formula
+        this._calculatedpremium = ((this.premiumForm.get('sumInsured').value * this.rating_value * _ageValue) / 1000 * 12).toFixed(2);
 
-      if (this._calculatedpremium != "") {
-        this._Infostring = "Based on below input , Calculated Monthly Premium is ";
+        //show output on screen
+        if (this._calculatedpremium != "") {
+          this._Infostring = "Based on below input , Calculated Monthly Premium is ";
+        }
       }
+      else {
+        this.IsAgevalid = false
+      }
+      //
+
+
     }
   }
 

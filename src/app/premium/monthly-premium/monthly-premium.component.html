@@ -53,11 +53,11 @@
         </div>
         <input type="date" class="inputalign" formControlName="DOB">
         <div
-          *ngIf="premiumForm.controls.DOB.invalid && (premiumForm.controls.DOB.dirty || premiumForm.controls.DOB.touched)"
+          *ngIf="!this.IsAgevalid  || (premiumForm.controls.DOB.invalid && (premiumForm.controls.DOB.dirty || premiumForm.controls.DOB.touched))"
           class="alert">
 
-          <div class="errortextalign" *ngIf="premiumForm.controls.DOB.errors.required">
-            Date Of Birth is required !
+          <div class="alert errortextalign">
+            Date Of Birth is required / InValid Date !
           </div>
 
         </div>
