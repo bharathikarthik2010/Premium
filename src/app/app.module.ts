@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { MonthlyPremiumComponent } from './premium/monthly-premium/monthly-premium.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     AppComponent,
